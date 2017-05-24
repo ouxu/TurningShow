@@ -29,10 +29,10 @@ exports.submitInnovation = async (body) => {
 
 exports.download = async (type) => {
   const exportExcel = require('../utils/exportExcel')
-  const SECRETACM = 'ACMCLUB2017'
+  const ACM = 'turning'
 
   let result = await db.select(type)
-  const _headers = type === SECRETACM ? [{
+  const _headers = type === ACM ? [{
     caption: '队伍序号',
     type: 'number'
   }, {
