@@ -2,7 +2,7 @@ const db = require('../modal/mysql.js')
 const moment = require('moment')
 
 exports.submitTurning = async (body) => {
-  const isSubmited = await db.get('turning2017', {
+  const isSubmited = await db.get('turning', {
     leaderMobile: body.leaderMobile
   })
   if (isSubmited) {

@@ -54,7 +54,7 @@ exports.download = async (ctx, next) => {
   if (secret !== SECRETACM && secret !== SECRETINNOV) {
     throw new Error('密码错误')
   }
-  const type = secret === SECRETACM ? 'turning2017' : 'innovation'
+  const type = secret === SECRETACM ? 'turning' : 'innovation'
   const result = await applyService.download(type)
   let data = new Buffer(result, 'binary')
   ctx.set('Content-Type', 'application/vnd.openxmlformats')
