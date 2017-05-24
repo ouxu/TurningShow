@@ -11,7 +11,7 @@ exports.submitTurning = async (body) => {
   const data = Object.assign(body, {
     submitAt: moment().format('YYYY-MM-DD HH:mm:ss')
   })
-  await db.insert('turning2017', data)
+  await db.insert('turning', data)
 }
 
 exports.submitInnovation = async (body) => {
