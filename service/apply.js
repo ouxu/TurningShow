@@ -126,6 +126,9 @@ exports.download = async (type) => {
       caption: '性别',
       type: 'string'
     }, {
+      caption: '单位',
+      type: 'string'
+    }, {
       caption: '手机号',
       type: 'string'
     }, {
