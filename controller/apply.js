@@ -43,6 +43,10 @@ exports.submitSpecial = async (ctx, next) => {
 }
 exports.submitInnovation = async (ctx, next) => {
   const createRule = {
+    knowLoss: 'string',
+    knowConnect: 'string',
+    knowTheory: 'string',
+    knowBitCoin: 'string',
     name: 'string',
     sex: 'string',
     major: 'string',
@@ -56,8 +60,10 @@ exports.submitInnovation = async (ctx, next) => {
     console.log('Error: ' + e.message)
     ctx.throw('输入格式有误，请认真核对！')
   }
-  await applyService.submitInnovation(ctx.request.body)
-  ctx.status = 200
+  const insertId = await applyService.submitInnovation(ctx.request.body)
+  ctx.body = {
+    applyId: insertId
+  }
 }
 
 exports.download = async (ctx, next) => {

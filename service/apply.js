@@ -24,7 +24,8 @@ exports.submitInnovation = async (body) => {
   const data = Object.assign(body, {
     submitAt: moment().format('YYYY-MM-DD HH:mm:ss')
   })
-  await db.insert('innovation', data)
+  const result = await db.insert('innovation', data)
+  return result.insertId
 }
 
 exports.submitSpecial = async (body) => {
@@ -94,6 +95,18 @@ exports.download = async (type) => {
     'innovation': [{
       caption: '序号',
       type: 'number'
+    }, {
+      caption: '问题1',
+      type: 'string'
+    }, {
+      caption: '问题2',
+      type: 'string'
+    }, {
+      caption: '问题3',
+      type: 'string'
+    }, {
+      caption: '问题4',
+      type: 'string'
     }, {
       caption: '姓名',
       type: 'string'
