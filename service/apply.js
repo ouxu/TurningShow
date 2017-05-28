@@ -123,9 +123,6 @@ exports.download = async (type) => {
       caption: '手机号',
       type: 'string'
     }, {
-      caption: '邮箱',
-      type: 'string'
-    }, {
       caption: '提交时间',
       type: 'string'
     }],

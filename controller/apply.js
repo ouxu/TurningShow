@@ -51,8 +51,7 @@ exports.submitInnovation = async (ctx, next) => {
     sex: 'string',
     major: 'string',
     stuId: 'string',
-    mobile: /(13\d|14[57]|15[^4,\D]|17[678]|18\d)\d{8}|170[059]\d{7}/ig,
-    email: /\w[-\w.+]*@([A-Za-z0-9][-A-Za-z0-9]+\.)+[A-Za-z]{2,14}/
+    mobile: /(13\d|14[57]|15[^4,\D]|17[678]|18\d)\d{8}|170[059]\d{7}/ig
   }
   try {
     ctx.verifyParams(createRule)
