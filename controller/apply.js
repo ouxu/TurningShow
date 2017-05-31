@@ -35,12 +35,8 @@ exports.submitSpecial = async (ctx, next) => {
     },
     mobile: /(13\d|14[57]|15[^4,\D]|17[678]|18\d)\d{8}|170[059]\d{7}/ig
   }
-  try {
-    ctx.verifyParams(createRule)
-  } catch (e) {
-    console.log('Error: ' + e.message)
-    ctx.throw('输入格式有误，请认真核对！')
-  }
+  ctx.verifyParams(createRule)
+
   await applyService.submitSpecial(ctx.request.body)
   ctx.status = 200
 }
