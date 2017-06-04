@@ -28,7 +28,7 @@ app.use(json())
 app.use(logger())
 
 app.use(parameter(app))
-app.use(errorHandler())
+// app.use(errorHandler())
 app.use(successHandler('^/api/apply'))
 
 // logger

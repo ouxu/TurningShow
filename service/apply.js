@@ -14,6 +14,19 @@ exports.submitTurning = async (body) => {
   await db.insert('turning', data)
 }
 
+exports.submitTurningOnline = async (body) => {
+  const isSubmited = await db.get('turingOnline', {
+    leaderMobile: body.leaderMobile
+  })
+  if (isSubmited) {
+    throw new Error('该队伍已登记')
+  }
+  const data = Object.assign(body, {
+    submitAt: moment().format('YYYY-MM-DD HH:mm:ss')
+  })
+  await db.insert('turingOnline', data)
+}
+
 exports.submitInnovation = async (body) => {
   const isSubmited = await db.get('innovation', {
     mobile: body.mobile
