@@ -57,13 +57,12 @@ exports.submitTurningOnline = async (ctx, next) => {
       type: 'string'
     }
   }
-  ctx.verifyParams(createRule)
-  // try {
-  //   ctx.verifyParams(createRule)
-  // } catch (e) {
-  //   console.log('Error: ' + e.message)
-  //   ctx.throw('输入格式有误，请认真核对！')
-  // }
+  try {
+    ctx.verifyParams(createRule)
+  } catch (e) {
+    console.log('Error: ' + e.message)
+    ctx.throw('输入格式有误，请认真核对！')
+  }
   await applyService.submitTurningOnline(ctx.request.body)
   ctx.status = 200
 }
@@ -124,7 +123,7 @@ exports.download = async (ctx, next) => {
   if (password !== PASSWORD) {
     throw new Error('密码错误')
   }
-  if (type !== 'turning' && type !== 'special' && type !== 'innovation') {
+  if (type !== 'turning' && type !== 'special' && type !== 'innovation' && type !== 'turingOnline') {
     throw new Error('指定数据表名错误')
   }
   const result = await applyService.download(type)

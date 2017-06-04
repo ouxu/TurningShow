@@ -157,6 +157,43 @@ exports.download = async (type) => {
     }, {
       caption: '提交时间',
       type: 'string'
+    }],
+    'turingOnline': [{
+      caption: '队伍序号',
+      type: 'number'
+    }, {
+      caption: '队伍名称',
+      type: 'string'
+    }, {
+      caption: '队长姓名',
+      type: 'string'
+    }, {
+      caption: '队长学校',
+      type: 'string'
+    }, {
+      caption: '使用语言',
+      type: 'string'
+    }, {
+      caption: '队长手机号',
+      type: 'string'
+    }, {
+      caption: '队长邮箱',
+      type: 'string'
+    }, {
+      caption: '队员1姓名',
+      type: 'string'
+    }, {
+      caption: '队员1x学校',
+      type: 'string'
+    }, {
+      caption: '队员2姓名',
+      type: 'string'
+    }, {
+      caption: '队员2学校',
+      type: 'string'
+    }, {
+      caption: '提交时间',
+      type: 'string'
     }]
   }
   const _headers = typeHeader[type]
