@@ -2,12 +2,12 @@ const db = require('../modal/mysql.js')
 const moment = require('moment')
 
 exports.submitTurning = async (body) => {
-  const isSubmited = await db.get('turning', {
-    leaderMobile: body.leaderMobile
-  })
-  if (isSubmited) {
-    throw new Error('该队伍已登记')
-  }
+  // const isSubmited = await db.get('turning', {
+  //   leaderMobile: body.leaderMobile
+  // })
+  // if (isSubmited) {
+  //   throw new Error('该队伍已登记')
+  // }
   const data = Object.assign(body, {
     submitAt: moment().format('YYYY-MM-DD HH:mm:ss')
   })
@@ -15,12 +15,12 @@ exports.submitTurning = async (body) => {
 }
 
 exports.submitTurningOnline = async (body) => {
-  const isSubmited = await db.get('turingOnline', {
-    leaderMobile: body.leaderMobile
-  })
-  if (isSubmited) {
-    throw new Error('该队伍已登记')
-  }
+  // const isSubmited = await db.get('turingOnline', {
+  //   leaderMobile: body.leaderMobile
+  // })
+  // if (isSubmited) {
+  //   throw new Error('该队伍已登记')
+  // }
   const data = Object.assign(body, {
     submitAt: moment().format('YYYY-MM-DD HH:mm:ss')
   })
