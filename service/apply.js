@@ -256,7 +256,7 @@ exports.verifyTeam = async (body) => {
 }
 
 exports.applyCertrep = async (body) => {
-  const verify = await db.get('turingOnline', {
+  const verify = await db.get('certreq', {
     leaderMobile: body.leaderMobile
   })
   if (!verify) {
