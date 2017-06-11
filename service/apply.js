@@ -226,10 +226,10 @@ exports.download = async (type) => {
       caption: '邮编',
       type: 'string'
     }, {
-      caption: '提交时间',
+      caption: '备注',
       type: 'string'
     }, {
-      caption: '备注',
+      caption: '提交时间',
       type: 'string'
     }]
   }
