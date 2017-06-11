@@ -207,7 +207,7 @@ exports.verifyTeam = async (body) => {
     leaderMobile: body.leaderMobile
   })
   if (!verifyValues) {
-    throw new Error('无该队伍信息，请核对后重新提交')
+    throw new Error('无该队伍信息或未在本系统登记过，请核对后重新提交')
   }
   if (verifyValues.leaderName !== body.leaderName) {
     throw new Error('队长手机与登记姓名不匹配，请核对后重新提交')
