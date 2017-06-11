@@ -194,6 +194,43 @@ exports.download = async (type) => {
     }, {
       caption: '提交时间',
       type: 'string'
+    }],
+    'certreq': [{
+      caption: '序号',
+      type: 'number'
+    }, {
+      caption: '队长姓名',
+      type: 'string'
+    }, {
+      caption: '队长手机号',
+      type: 'string'
+    }, {
+      caption: '队长邮箱',
+      type: 'string'
+    }, {
+      caption: '是否需要证书',
+      type: 'string'
+    }, {
+      caption: '队员1姓名',
+      type: 'string'
+    }, {
+      caption: '队员2姓名',
+      type: 'string'
+    }, {
+      caption: '地址省市',
+      type: 'string'
+    }, {
+      caption: '详细地址',
+      type: 'string'
+    }, {
+      caption: '邮编',
+      type: 'string'
+    }, {
+      caption: '提交时间',
+      type: 'string'
+    }, {
+      caption: '备注',
+      type: 'string'
     }]
   }
   const _headers = typeHeader[type]
