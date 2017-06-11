@@ -132,3 +132,48 @@ exports.download = async (ctx, next) => {
   ctx.set('Content-Disposition', 'attachment; filename=' + type + Date.now() + '.xlsx')
   ctx.body = data
 }
+
+exports.applyCertrep = async (ctx, next) => {
+  const createRule = {
+    teamName: 'string',
+    leaderName: 'string',
+    leaderStuId: 'string',
+    leaderClass: 'string',
+    teamLanguage: 'string',
+    leaderMobile: /^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|17[6|7|8]|18[0|1|2|3|5|6|7|8|9])\d{8}$/,
+    leaderMail: /^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/,
+    memberName1: 'string',
+    memberStuId1: 'string',
+    memberClass1: 'string',
+    memberName2: {
+      required: false,
+      type: 'string'
+    },
+    memberStuId2: {
+      required: false,
+      type: 'string'
+    },
+    memberClass2: {
+      required: false,
+      type: 'string'
+    }
+  }
+  try {
+    ctx.verifyParams(createRule)
+  } catch (e) {
+    console.log('Error: ' + e.message)
+    ctx.throw('输入格式有误，请认真核对！')
+  }
+  await applyService.applyCertrep(ctx.request.body)
+  ctx.status = 200
+}
+
+exports.verifyTeam = async (ctx, next) => {
+  const result = await applyService.verifyTeam(ctx.request.body)
+  ctx.body = result
+}
+
+exports.applyCertrep = async (ctx, next) => {
+  await applyService.applyCertrep(ctx.request.body)
+  ctx.status = 200
+}

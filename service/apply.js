@@ -201,3 +201,37 @@ exports.download = async (type) => {
   const excel = exportExcel(_headers, rows)
   return excel
 }
+
+exports.verifyTeam = async (body) => {
+  const verifyValues = await db.get('turingOnline', {
+    leaderMobile: body.leaderMobile
+  })
+  if (!verifyValues) {
+    throw new Error('无该队伍信息，请核对后重新提交')
+  }
+  if (verifyValues.leaderName !== body.leaderName) {
+    throw new Error('队长手机与登记姓名不匹配，请核对后重新提交')
+  }
+  const preValues = await db.get('certreq', {
+    leaderMobile: body.leaderMobile
+  })
+  return preValues || verifyValues
+}
+
+exports.applyCertrep = async (body) => {
+  const verify = await db.get('turingOnline', {
+    leaderMobile: body.leaderMobile
+  })
+  if (!verify) {
+    const data = Object.assign(body, {
+      submitAt: moment().format('YYYY-MM-DD HH:mm:ss')
+    })
+    await db.insert('certreq', data)
+  } else {
+    const data = Object.assign(body, {
+      id: verify.id,
+      submitAt: moment().format('YYYY-MM-DD HH:mm:ss')
+    })
+    await db.update('certreq', data)
+  }
+}
