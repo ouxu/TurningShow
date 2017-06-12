@@ -86,20 +86,13 @@ exports.verifyTeam = async (body) => {
 
 exports.applyCertrep = async (body) => {
   const verify = await db.get('certreq', {
-    leaderMobile: body.leaderMobile
+    leaderName: body.leaderName
   })
-  if (!verify) {
-    const data = Object.assign(body, {
-      submitAt: moment().format('YYYY-MM-DD HH:mm:ss')
-    })
-    await db.insert('certreq', data)
-  } else {
-    const data = Object.assign(body, {
-      id: verify.id,
-      submitAt: moment().format('YYYY-MM-DD HH:mm:ss')
-    })
-    await db.update('certreq', data)
-  }
+  const data = Object.assign(body, {
+    id: verify.id,
+    submitAt: moment().format('YYYY-MM-DD HH:mm:ss')
+  })
+  await db.update('certreq', data)
 }
 
 exports.turingFeedback = async (body) => {
