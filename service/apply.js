@@ -220,6 +220,9 @@ exports.download = async (type) => {
       caption: '地址省市',
       type: 'string'
     }, {
+      caption: '邮编',
+      type: 'string'
+    }, {
       caption: '详细地址',
       type: 'string'
     }, {
