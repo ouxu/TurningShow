@@ -223,9 +223,6 @@ exports.download = async (type) => {
       caption: '详细地址',
       type: 'string'
     }, {
-      caption: '邮编',
-      type: 'string'
-    }, {
       caption: '备注',
       type: 'string'
     }, {
@@ -252,7 +249,8 @@ exports.verifyTeam = async (body) => {
   const preValues = await db.get('certreq', {
     leaderMobile: body.leaderMobile
   })
-  return preValues || verifyValues
+
+  return preValues.submitAt ? preValues : verifyValues
 }
 
 exports.applyCertrep = async (body) => {
