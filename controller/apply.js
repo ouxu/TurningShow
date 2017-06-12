@@ -113,7 +113,6 @@ exports.submitInnovation = async (ctx, next) => {
 exports.download = async (ctx, next) => {
   const {password, type} = ctx.query
   const PASSWORD = 'ACMCLUB2017'
-  console.log(password, type)
   if (!password) {
     throw new Error('未输入密码')
   }
@@ -123,7 +122,7 @@ exports.download = async (ctx, next) => {
   if (password !== PASSWORD) {
     throw new Error('密码错误')
   }
-  if (type !== 'certreq' && type !== 'turning' && type !== 'special' && type !== 'innovation' && type !== 'turingOnline') {
+  if (type !== 'turing_feedback' && type !== 'certreq' && type !== 'turning' && type !== 'special' && type !== 'innovation' && type !== 'turingOnline') {
     throw new Error('指定数据表名错误')
   }
   const result = await applyService.download(type)
@@ -175,5 +174,10 @@ exports.verifyTeam = async (ctx, next) => {
 
 exports.applyCertrep = async (ctx, next) => {
   await applyService.applyCertrep(ctx.request.body)
+  ctx.status = 200
+}
+
+exports.turingFeedback = async (ctx, next) => {
+  await applyService.turingFeedback(ctx.request.body)
   ctx.status = 200
 }

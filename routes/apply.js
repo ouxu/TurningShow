@@ -9,5 +9,6 @@ router.get('/api/apply/download', applyController.download)
 router.get('/api/apply/test', applyController.test)
 router.post('/api/apply/verifyTeam', applyController.verifyTeam)
 router.post('/api/apply/applyCertrep', applyController.applyCertrep)
+router.post('/api/apply/turingFeedback', applyController.turingFeedback)
 
 module.exports = router
